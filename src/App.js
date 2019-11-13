@@ -3,6 +3,8 @@ import Home from "./Home/Home";
 import SearchResult from "./Search/SearchResult";
 import { Route, Link, Switch } from "react-router-dom";
 import Axios from "axios";
+import Profile from "./Profile/Profile";
+import Header from "./Header/Header";
 
 class App extends React.Component {
   constructor(props) {
@@ -35,6 +37,8 @@ class App extends React.Component {
   render() {
     const { ...rest } = this.props;
     return (
+      <React.Fragment>
+      <Header />
       <Switch>
         <Route
           path="/"
@@ -56,7 +60,10 @@ class App extends React.Component {
             <SearchResult users={this.state.usersData} getUser={(user) => this.handleSubmit(user)} {...props} />
           )}
         />
+        <Route path='/profile/:name' component={Profile}/>
+        
       </Switch>
+      </React.Fragment>
     );
   }
 }

@@ -16,7 +16,7 @@ import { Link } from "react-router-dom";
 const Home = ({handleInput, handleSubmit, loading, input}) => {
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
       <Container style={{ marginTop: "12%" }}>
         <Row>
           <Col>

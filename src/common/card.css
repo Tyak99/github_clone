@@ -1,4 +1,30 @@
-.name {
+.cardContainer {
+    border-top: 1px solid black; 
+    padding: 0.5rem 0 ;
+}
+
+.actionButton {
+    background-color: "#34CABE"; 
+    border: 0;
+}
+
+.username {
     margin-bottom: 1rem;
     height: 50%;
+    font-size: 20px;
+}
+
+.repoName {
+    font-size: 20px
+}
+
+.repoSubDetails {
+    width: 50%;
+} 
+.repoSubDetails p {
+    font-size: 0.8rem;
+}
+
+.repoDescription {
+    font-size: 0.8rem;
 }

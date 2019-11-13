@@ -1,0 +1,23 @@
+.profileImage img {
+    width: 100%;
+}
+
+.profileDescription * {
+    margin-bottom: 0
+}
+
+.links {
+    border-bottom: 1px solid grey;
+}
+
+.links .col {
+    padding-bottom: 10px;
+}
+
+.links a {
+    color: black;
+}
+
+.links a:hover {
+    text-decoration: none;
+}
