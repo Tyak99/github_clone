@@ -1,10 +1,11 @@
 .resultType {
   border-radius: 2px;
   border: 1px solid grey;
-  padding: 0.2rem 0.5rem;
+  padding: 0.5rem;
 }
 .resultType h4 {
   font-size: 14px;
+  margin-bottom: 0;
 }
 
 .resultAmount {

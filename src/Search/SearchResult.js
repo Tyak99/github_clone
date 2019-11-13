@@ -5,57 +5,45 @@ import {
   Container,
   Pagination,
   PaginationItem,
-  PaginationLink
+  PaginationLink,
+  Button
 } from "reactstrap";
 import "./searchResult.css";
 import Header from "../Header/Header";
 import Card from "../common/Card";
+import { Link } from "react-router-dom";
 
 class SearchResult extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {};
+  componentDidMount() {
+    this.props.getUser(this.props.match.params.user);
   }
 
   render() {
+    let display = <div> Finding user.... </div>;
+    if (this.props.users) {
+      if (this.props.users.total_count > 0) {
+        display = this.props.users.items.map(element => {
+          return (
+            <Card name={element.login} avatar_url={element.avatar_url}/>
+          );
+        });
+      } else {
+        display = <div> No user found :( </div>;
+      }
+    }
     return (
       <Fragment>
         <Header />
         <Container className="ph-5">
           <Row>
-            <Col xs="3">
+            <Col lg="3" xs='6'>
               <div className="resultType">
-                <a href="">Users</a>
+                <h4> Users <span style={{float: 'right'}}> {this.props.users && this.props.users.total_count} </span></h4>
               </div>
+              <Link to='/'> Search Again </Link>
             </Col>
-            <Col>
-              <h3 className="resultAmount"> 200 users</h3>
-              <Card>
-                <Col>
-                  <a href="">Tunde </a>
-                  <p>
-                    I'm a solutions architect at AWS and prior to that
-                    co-founded Entelo. Interested in renewable energy, media,
-                    and democracy.
-                  </p>
-                </Col>
-                <Col xs="3">
-                  <img
-                    src="/logo192.png"
-                    alt=""
-                    style={{ width: 100, height: 100 }}
-                  />
-                </Col>
-              </Card>
-              <Pagination aria-label="Page navigation example">
-                <PaginationItem active>
-                  <PaginationLink href="#">1</PaginationLink>
-                </PaginationItem>
-                <PaginationItem>
-                  <PaginationLink href="#">2</PaginationLink>
-                </PaginationItem>
-              </Pagination>
+            <Col lg='8' xs='12'>
+              {display}
             </Col>
           </Row>
         </Container>
