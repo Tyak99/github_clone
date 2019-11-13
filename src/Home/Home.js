@@ -29,9 +29,9 @@ class Home extends Component {
   }
   render() {
     return (
-      <div>
+      <div style={{marginTop: '20%'}}>
         <Header />
-        <Container className='container'>
+        <Container>
           <Row>
             <Col>
               <h1 className="headerText"> Github users listing</h1>

@@ -1,10 +1,11 @@
 import React from 'react';
 import Home from './Home/Home';
+import SearchResult from './Search/SearchResult';
 
 const App = () => {
   return (
     <div className="App">
-      <Home />
+      <SearchResult />
     </div>
   );
 }

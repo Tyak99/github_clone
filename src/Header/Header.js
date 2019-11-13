@@ -1,10 +1,11 @@
 import React from "react";
-import './header.css'
+import "./header.css";
+import { Navbar, NavbarBrand } from "reactstrap";
 const Header = () => {
   return (
-    <div className='header'>
-      <h2>Github Clone</h2>
-    </div>
+    <Navbar color="dark" light expand="md">
+      <NavbarBrand href="/" style={{color: 'white'}}>Github Clone</NavbarBrand>
+    </Navbar>
   );
 };
 
