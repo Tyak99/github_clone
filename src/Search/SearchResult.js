@@ -3,10 +3,16 @@ import { Row, Col, Container } from "reactstrap";
 import "./searchResult.css";
 import { Link } from "react-router-dom";
 import UserCard from "../common/UserCard";
+import Paginate from "../common/Pagination";
 
 class SearchResult extends Component {
   componentDidMount() {
     this.props.getUser(this.props.match.params.user);
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.users !== this.props.users) {
+      window.scrollTo(0, 0);
+    }
   }
 
   render() {
@@ -24,11 +30,14 @@ class SearchResult extends Component {
         });
       } else {
         display = (
-          <div  className='invalidUser'>
+          <div className="invalidUser">
             <h5>
-              Sorry :( We couldn't find any user matching '{this.props.match.params.user}'
+              Sorry :( We couldn't find any user matching '
+              {this.props.match.params.user}'
             </h5>
-            <p> You can <Link to='/'> Search again </Link></p>
+            <p>
+              You can <Link to="/"> Search again </Link>
+            </p>
           </div>
         );
       }
@@ -49,6 +58,12 @@ class SearchResult extends Component {
             </Col>
             <Col lg="8" xs="12">
               {display}
+              {this.props.pagination && (
+                <Paginate
+                  pagination={this.props.pagination}
+                  getUser={this.props.getUser}
+                />
+              )}
             </Col>
           </Row>
         </Container>

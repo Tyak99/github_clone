@@ -6,6 +6,7 @@ import Axios from "axios";
 import Profile from "./Profile/Profile";
 import Header from "./common/Header/Header";
 import NotFound from "./common/NotFound";
+import parse from 'parse-link-header';
 
 class App extends Component {
   constructor(props) {
@@ -14,15 +15,17 @@ class App extends Component {
     this.state = {
       searchParam: "",
       usersData: null,
-      loading: false
+      loading: false,
+      pagination: null
     };
   }
-  handleSubmit = user => {
+  handleSubmit = (user, url) => {
     this.setState({ loading: true });
-    Axios.get(`https://api.github.com/search/users?q=${user}`)
+    const requestUrl = user === null ? url : `https://api.github.com/search/users?q=${user}`
+    Axios.get(requestUrl)
       .then(res => {
-        console.log(res.data);
-        this.setState({ usersData: res.data, loading: false });
+        const parsed = parse(res.headers.link)
+        this.setState({ usersData: res.data, loading: false, pagination: parsed });
       })
       .catch(error => {
         this.setState({ loading: false });
@@ -57,7 +60,8 @@ class App extends Component {
             render={props => (
               <SearchResult
                 users={this.state.usersData}
-                getUser={user => this.handleSubmit(user)}
+                getUser={(user, url) => this.handleSubmit(user, url)}
+                pagination={this.state.pagination}
                 {...props}
               />
             )}
