@@ -1,22 +1,18 @@
-import React, { Component } from "react";
+import React from "react";
 import {
   Button,
-  Form,
   FormGroup,
-  Label,
   Input,
   Container,
   Row,
   Col
 } from "reactstrap";
 import "./home.css";
-import Header from "../Header/Header";
 import { Link } from "react-router-dom";
 
 const Home = ({handleInput, handleSubmit, loading, input}) => {
   return (
     <div>
-      {/* <Header /> */}
       <Container style={{ marginTop: "12%" }}>
         <Row>
           <Col>

@@ -36,7 +36,7 @@ class Tab extends Component {
     let display;
     if (this.state.userData) {
       display = this.state.userData.map(element => {
-        return <Card name={element.login} avatar_url={element.avatar_url} />;
+        return <Card name={element.login} avatar_url={element.avatar_url} key={element.id}/>;
       });
     } else if (this.state.repoData) {
       display = this.state.repoData.map(element => {
@@ -47,6 +47,7 @@ class Tab extends Component {
             language={element.language}
             forks={element.forks_count}
             stars={element.stargazers_count}
+            key={element.id}
           />
         );
       });

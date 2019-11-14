@@ -1,5 +1,4 @@
 import React from "react";
-import "./header.css";
 import { Navbar, NavbarBrand } from "reactstrap";
 const Header = () => {
   return (

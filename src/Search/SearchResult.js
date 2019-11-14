@@ -3,13 +3,8 @@ import {
   Row,
   Col,
   Container,
-  Pagination,
-  PaginationItem,
-  PaginationLink,
-  Button
 } from "reactstrap";
 import "./searchResult.css";
-import Header from "../Header/Header";
 import { Link } from "react-router-dom";
 import UserCard from "../common/UserCard";
 
@@ -19,12 +14,12 @@ class SearchResult extends Component {
   }
 
   render() {
-    let display = <div> Finding user.... </div>;
+    let display = <div>Searching... </div>;
     if (this.props.users) {
       if (this.props.users.total_count > 0) {
         display = this.props.users.items.map(element => {
           return (
-            <UserCard name={element.login} avatar_url={element.avatar_url}/>
+            <UserCard name={element.login} avatar_url={element.avatar_url} key={element.id}/>
           );
         });
       } else {

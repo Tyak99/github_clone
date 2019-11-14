@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Container, Row, Col } from "reactstrap";
 import { NavLink, Route } from "react-router-dom";
 import "./profile.css";
-import Card from "../common/UserCard";
 import Axios from "axios";
 import Tab from "./Tab";
 
@@ -15,10 +14,10 @@ class Profile extends Component {
     };
   }
   componentDidMount() {
-    console.log("I mounted");
     const { name } = this.props.match.params;
     Axios.get(`https://api.github.com/users/${name}`)
       .then(res => {
+        console.log(res.data)
         this.setState({ userData: res.data });
       })
       .catch(error => {
@@ -78,7 +77,7 @@ class Profile extends Component {
                     color: "red"
                   }}
                 >
-                  Repositories
+                  Repositories <span></span>
                 </NavLink>
               </Col>
               <Col>
