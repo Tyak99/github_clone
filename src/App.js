@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import Axios from "axios";
 import Profile from "./Profile/Profile";
 import Header from "./common/Header/Header";
+import NotFound from "./common/NotFound";
 
 class App extends Component {
   constructor(props) {
@@ -62,6 +63,7 @@ class App extends Component {
             )}
           />
           <Route path="/profile/:name" component={Profile} />
+          <Route component={NotFound} />
         </Switch>
       </React.Fragment>
     );
