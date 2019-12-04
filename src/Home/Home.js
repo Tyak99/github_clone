@@ -1,9 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 import { Button, FormGroup, Input, Container, Row, Col } from "reactstrap";
 import "./home.css";
 import { Link } from "react-router-dom";
 
-const Home = ({ handleInput, handleSubmit, loading, input }) => {
+const Home = () => {
+  const [searchParam, setSearchParam] = useState("");
+
+  const handleInput = e => {
+    setSearchParam(e.target.value)
+  };
+
   return (
     <div>
       <Container style={{ marginTop: "12%" }}>
@@ -27,7 +33,7 @@ const Home = ({ handleInput, handleSubmit, loading, input }) => {
                 </FormGroup>
               </Col>
               <Col sm="4" xs="12">
-                <Link to={`/search-result/${input}`}>
+                <Link to={`/search-result/${searchParam}`}>
                   <Button
                     style={{ backgroundColor: "#34CABE", border: 0 }}
                     size="lg"
